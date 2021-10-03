@@ -60,13 +60,19 @@ fail:
 
 static BOOL test_DsMakeSpnW(void)
 {
-	WCHAR testServiceClass[] = { 'H', 'T', 'T', 'P', '\0' };
-	WCHAR testServiceName[] = { 'L', 'A', 'B', '1', '-', 'W', '2', 'K', '8', 'R', '2',
-		                        '-', 'G', 'W', '.', 'l', 'a', 'b', '1', '.', 'a', 'w',
-		                        'a', 'k', 'e', '.', 'l', 'o', 'c', 'a', 'l', '\0' };
-	WCHAR testSpn[] = { 'H', 'T', 'T', 'P', '/', 'L', 'A', 'B', '1', '-', 'W', '2', 'K',
-		                '8', 'R', '2', '-', 'G', 'W', '.', 'l', 'a', 'b', '1', '.', 'a',
-		                'w', 'a', 'k', 'e', '.', 'l', 'o', 'c', 'a', 'l', '\0' };
+	BYTE testServiceClassW[] = { 'H', 0, 'T', 0, 'T', 0, 'P', 0, '\0', 0 };
+	BYTE testServiceNameW[] = { 'L', 0, 'A', 0, 'B', 0, '1', 0, '-', 0, 'W', 0, '2', 0, 'K', 0,
+				    '8', 0, 'R', 0, '2', 0, '-', 0, 'G', 0, 'W', 0, '.', 0, 'l', 0,
+				    'a', 0, 'b', 0, '1', 0, '.', 0, 'a', 0, 'w', 0, 'a', 0, 'k', 0,
+				    'e', 0, '.', 0, 'l', 0, 'o', 0, 'c', 0, 'a', 0, 'l', 0, 0, 0 };
+	BYTE testSpnW[] = { 'H', 0, 'T', 0, 'T', 0, 'P', 0, '/', 0, 'L', 0, 'A', 0, 'B', 0, '1', 0,
+			    '-', 0, 'W', 0, '2', 0, 'K', 0, '8', 0, 'R', 0, '2', 0, '-', 0, 'G', 0,
+			    'W', 0, '.', 0, 'l', 0, 'a', 0, 'b', 0, '1', 0, '.', 0, 'a', 0, 'w', 0,
+			    'a', 0, 'k', 0, 'e', 0, '.', 0, 'l', 0, 'o', 0, 'c', 0, 'a', 0, 'l', 0,
+			    0, 0 };
+	WCHAR *testServiceClass = (WCHAR *)testServiceClassW;
+	WCHAR *testServiceName = (WCHAR *)testServiceNameW;
+	WCHAR *testSpn = (WCHAR *)testSpnW;
 	BOOL rc = FALSE;
 	WCHAR Spn[100] = { 0 };
 	DWORD status;
