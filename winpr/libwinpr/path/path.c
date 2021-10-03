@@ -22,6 +22,7 @@
 #endif
 
 #include <winpr/crt.h>
+#include <winpr/endian.h>
 #include <winpr/heap.h>
 #include <winpr/tchar.h>
 
@@ -925,6 +926,8 @@ WCHAR PathGetSeparatorW(unsigned long dwFlags)
 		separator = PATH_SEPARATOR_CHR;
 	else if (dwFlags == PATH_STYLE_NATIVE)
 		separator = PATH_SEPARATOR_CHR;
+
+	Data_Read_UINT16(&separator, separator);
 
 	return separator;
 }
